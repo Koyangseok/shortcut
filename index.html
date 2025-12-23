@@ -59,6 +59,27 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 18px;
         }
+        .success-message {
+            color: #4caf50;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 12px;
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        .success-message.show {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         .btn {
             background: linear-gradient(135deg, #3b9eff 0%, #1e88e5 100%);
             color: white;
@@ -111,6 +132,7 @@
         <div class="ip-display">
             <div class="ip-label">내 IP 주소</div>
             <div id="ip-address" class="ip-address loading">불러오는 중...</div>
+            <div id="success-message" class="success-message">✓ 우회 성공</div>
         </div>
         
         <a href="https://hoohootv335.xyz" class="btn primary" target="_blank">
@@ -140,6 +162,11 @@
                         const ip = data.ip || data.address;
                         if (ip) {
                             document.getElementById('ip-address').textContent = ip;
+                            
+                            // IP가 152.67.209.227이면 우회 성공 메시지 표시
+                            if (ip === '152.67.209.227') {
+                                document.getElementById('success-message').classList.add('show');
+                            }
                             return;
                         }
                     } catch (e) {
