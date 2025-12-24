@@ -42,7 +42,7 @@
             padding: 20px;
             text-align: center;
             margin-bottom: 10px;
-            display: none; /* 기본적으로 숨김 */
+            display: none;
         }
         .ip-display.show {
             display: block;
@@ -107,6 +107,11 @@
             font-size: 20px;
             padding: 18px 40px;
         }
+        #links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
         @media (max-width: 600px) {
             .title {
                 font-size: 28px;
@@ -133,28 +138,35 @@
             <div id="ip-address" class="ip-address loading">불러오는 중...</div>
             <div class="success-message">✓ 우회 성공</div>
         </div>
-        <a href="https://webtv.dothome.co.kr/" class="btn primary" target="_blank">
-            실시간 TV
-        </a>
+        <div id="links-container">
+            <!-- 링크 버튼들이 여기에 동적으로 추가됩니다 -->
+        </div>
+    </div>
+    <script>
+        // JSON 파일에서 링크 데이터 로드
+        async function loadLinks() {
+            try {
+                const response = await fetch('sites.json');
+                const sites = await response.json();
+                
+                const container = document.getElementById('links-container');
+                
+                sites.forEach(site => {
+                    const link = document.createElement('a');
+                    link.href = site.url;
+                    link.textContent = site.name;
+                    link.className = site.primary ? 'btn primary' : 'btn';
+                    link.target = '_blank';
+                    container.appendChild(link);
+                });
+            } catch (error) {
+                console.error('링크 로드 실패:', error);
+            }
+        }
 
-        <a href="https://tvwiki4.net/" class="btn primary" target="_blank">
-            티비위키
-        </a>
-        
-        <a href="https://hoohootv336.xyz" class="btn primary" target="_blank">
-            후후티비
-        </a>
- 
-        <a href="https://tvhot.store/" class="btn primary" target="_blank">
-            티비핫
-        </a>
-    
-   </div>
-   <script>
         // IP 주소를 가져오는 함수
         async function getIPAddress() {
             try {
-                // 여러 API를 시도 (하나가 실패해도 다른 걸로 시도)
                 const apis = [
                     'https://api.ipify.org?format=json',
                     'https://api64.ipify.org?format=json',
@@ -167,12 +179,10 @@
                         const data = await response.json();
                         const ip = data.ip || data.address;
                         if (ip) {
-                            // IP가 152.67.209.227이면 우회 성공 - IP 창 표시
                             if (ip === '152.67.209.227') {
                                 document.getElementById('ip-address').textContent = ip;
                                 document.getElementById('ip-display').classList.add('show');
                             }
-                            // 다른 IP면 아무것도 표시하지 않음
                             return;
                         }
                     } catch (e) {
@@ -184,9 +194,11 @@
             }
         }
 
-        // 페이지 로드 시 IP 주소 가져오기
-        window.addEventListener('DOMContentLoaded', getIPAddress);
+        // 페이지 로드 시 실행
+        window.addEventListener('DOMContentLoaded', () => {
+            loadLinks();
+            getIPAddress();
+        });
     </script>   
- 
 </body>
 </html>

@@ -1,0 +1,22 @@
+[
+    {
+        "name": "실시간 TV",
+        "url": "https://webtv.dothome.co.kr/",
+        "primary": true
+    },
+    {
+        "name": "티비위키",
+        "url": "https://tvwiki4.net/",
+        "primary": true
+    },
+    {
+        "name": "후후티비",
+        "url": "https://hoohootv336.xyz",
+        "primary": true
+    },
+    {
+        "name": "티비핫",
+        "url": "https://tvhot.store/",
+        "primary": true
+    }
+]
