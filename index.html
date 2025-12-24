@@ -165,8 +165,25 @@
 <body>
     <!-- Chatango 채팅창을 오른쪽 상단에 고정 -->
     <div style="position: fixed; top: 80px; right: 20px; z-index: 9999;">
-        <script id="cid0020000427586440943" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 350px;">{"handle":"gysgys","arch":"js","styles":{"a":"0084EF","b":100,"c":"FFFFFF","d":"FFFFFF","k":"0084EF","l":"0084EF","m":"0084EF","n":"FFFFFF","p":"10","q":"0084EF","r":100,"t":0,"usricon":0,"surl":0,"allowpm":0,"fwtickm":1}}</script>
+        <script id="cid0020000427586440943" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 350px;">{"handle":"gysgys","arch":"js","styles":{"a":"0084EF","b":100,"c":"FFFFFF","d":"FFFFFF","k":"0084EF","l":"0084EF","m":"0084EF","n":"FFFFFF","p":"10","q":"0084EF","r":100,"t":0,"usricon":0.01,"surl":0,"allowpm":0,"fwtickm":1}}</script>
     </div>
+    
+    <script>
+    // Chatango 공지 설정
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            var chatFrame = document.querySelector('iframe[id^="cid"]');
+            if (chatFrame && chatFrame.contentWindow) {
+                try {
+                    // 관리자 명령어로 공지 설정 시도
+                    // 실제로는 Chatango 대시보드에서 설정하거나 관리자 계정으로 로그인해서 /ann 명령어 사용 필요
+                } catch(e) {
+                    console.log('Chatango announcement setup');
+                }
+            }
+        }, 2000);
+    });
+    </script>
     
     <div class="header">
         <div class="logo">사이트 바로가기</div>
