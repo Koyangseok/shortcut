@@ -22,18 +22,11 @@
         }
         .header {
             background: linear-gradient(180deg, #000000 0%, rgba(20, 20, 20, 0.8) 100%);
-            padding: 40px 40px;
+            padding: 20px 40px;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            text-align: center;
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: white;
-            letter-spacing: 2px;
         }
         .ip-display {
             background: rgba(59, 158, 255, 0.1);
@@ -96,7 +89,7 @@
         }
         .movie-poster {
             width: 100%;
-            aspect-ratio: 2/3;
+            aspect-ratio: 3/2;
             object-fit: cover;
             display: block;
         }
@@ -124,9 +117,6 @@
         @media (max-width: 768px) {
             .header {
                 padding: 15px 20px;
-            }
-            .logo {
-                font-size: 24px;
             }
             .container {
                 padding: 20px;
@@ -163,9 +153,7 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">사이트 바로가기</div>
-    </div>
+    <div class="header"></div>
     
     <div id="ip-display" class="ip-display">
         <span class="ip-label">현재 IP:</span>
