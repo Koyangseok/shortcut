@@ -250,6 +250,28 @@
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    
+    // 위젯을 항상 열린 상태로 설정
+    Tawk_API.onLoad = function(){
+        Tawk_API.maximize();
+    };
+    
+    // 커스터마이징 옵션
+    Tawk_API.customStyle = {
+        visibility : {
+            desktop : {
+                position : 'br',
+                xOffset : 20,
+                yOffset : 20
+            },
+            mobile : {
+                position : 'br',
+                xOffset : 10,
+                yOffset : 10
+            }
+        }
+    };
+    
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
     s1.async=true;
@@ -260,5 +282,20 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+    
+    <style>
+    /* Tawk.to 브랜딩 및 불필요한 요소 숨기기 */
+    #tawk-bubble-container,
+    .tawk-branding,
+    .tawk-custom-color,
+    [data-tawk-branding] {
+        display: none !important;
+    }
+    
+    /* Powered by tawk.to 숨기기 */
+    iframe[title*="chat widget"] {
+        bottom: 20px !important;
+    }
+    </style>
 </body>
 </html>
