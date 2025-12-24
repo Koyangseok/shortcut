@@ -9,6 +9,11 @@
         "url": "https://tvwiki4.net/",
         "image": "tvwiki.png"
     },
+        {
+        "name": "티비룸",
+        "url": "https://tvroom11.org/",
+        "image": "tvhot.png"
+    },
     {
         "name": "후후티비",
         "url": "https://hoohootv336.xyz",
@@ -19,4 +24,5 @@
         "url": "https://tvhot.store/",
         "image": "tvhot.png"
     }
+    
 ]
