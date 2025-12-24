@@ -33,6 +33,11 @@
         "name": "GYS Game",
         "url": "https://gysgame.vercel.app/",
         "image": "gysg.png"
+    },
+             {
+        "name": "Adguard 광고 차단기",
+        "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
+        "image": "adguard.png"
     }
     
     
