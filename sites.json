@@ -26,4 +26,10 @@
         "url": "https://tvhot.store/",
         "primary": true
     }
+    {
+        "name": "GYS Movie",
+        "url": "https://gys-movie.vercel.app/",
+        "primary": true
+    }
+    
 ]
