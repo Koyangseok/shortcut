@@ -71,9 +71,11 @@
         }
         .movie-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
             padding: 20px 0;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         .movie-card {
             position: relative;
@@ -82,6 +84,7 @@
             border-radius: 8px;
             overflow: hidden;
             background: #1a1a1a;
+            text-decoration: none;
         }
         .movie-card:hover {
             transform: scale(1.05);
@@ -111,7 +114,7 @@
         }
         @media (max-width: 1200px) {
             .movie-grid {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                grid-template-columns: repeat(4, 1fr);
                 gap: 15px;
             }
         }
@@ -126,7 +129,7 @@
                 padding: 20px;
             }
             .movie-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                grid-template-columns: repeat(3, 1fr);
                 gap: 12px;
             }
             .ip-display {
@@ -141,7 +144,7 @@
         }
         @media (max-width: 480px) {
             .movie-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
             .movie-title {
