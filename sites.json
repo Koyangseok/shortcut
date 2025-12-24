@@ -23,6 +23,17 @@
         "name": "티비핫",
         "url": "https://tvhot.store/",
         "image": "tvhot.png"
+    },
+        {
+        "name": "GYS Movie",
+        "url": "https://gys-movie.vercel.app/",
+        "image": "gysm.png"
+    },
+         {
+        "name": "GYS Game",
+        "url": "https://gysgame.vercel.app/",
+        "image": "gysm.png"
     }
+    
     
 ]
