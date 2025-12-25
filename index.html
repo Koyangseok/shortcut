@@ -383,14 +383,14 @@
     <script>
         let sites = [];
         let selectedIndex = 0;
-        const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/Koyangseok/shortcut/main/sites.json';
-        const GITHUB_IMAGE_BASE = 'https://raw.githubusercontent.com/Koyangseok/shortcut/main/';
+        const LOCAL_JSON_URL = './sites.json';
+        const LOCAL_IMAGE_BASE = './';
 
-        // GitHub에서 사이트 목록 로드
+        // 로컬에서 사이트 목록 로드
         async function loadSites() {
             try {
-                // CORS 우회를 위한 캐시 버스팅
-                const response = await fetch(GITHUB_JSON_URL + '?t=' + Date.now());
+                // 로컬 JSON 파일 로드
+                const response = await fetch(LOCAL_JSON_URL + '?t=' + Date.now());
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -445,7 +445,7 @@
                 updateSelection();
                 
                 document.getElementById('appsContainer').insertAdjacentHTML('beforeend',
-                    '<div style="color: #ff6b6b; padding: 10px; font-size: 12px;">GitHub 연동 실패. 기본 목록을 표시합니다.</div>');
+                    '<div style="color: #ff6b6b; padding: 10px; font-size: 12px;">파일 로드 실패. 기본 목록을 표시합니다.</div>');
             }
         }
 
@@ -503,13 +503,13 @@
                 
                 console.log('원본 이미지 경로:', imageUrl); // 디버깅용
                 
-                // GitHub raw URL로 변환
+                // 로컬 이미지 경로로 변환
                 if (imageUrl) {
                     if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
                         // 이미 전체 URL인 경우 그대로 사용
                     } else {
-                        // 상대 경로인 경우 GitHub raw URL로 변환
-                        imageUrl = GITHUB_IMAGE_BASE + imageUrl;
+                        // 상대 경로인 경우 로컬 경로로 변환
+                        imageUrl = LOCAL_IMAGE_BASE + imageUrl;
                     }
                 }
                 
