@@ -4,248 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="googlebot" content="noindex, nofollow">
-    <meta name="yeti" content="noindex, nofollow">
-    <title> 사이트 바로가기 </title>
+    <title>스트리밍 사이트 모음</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background: #141414;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
             min-height: 100vh;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
-            color: white;
-            padding-bottom: 50px;
-        }
-        .header {
-            background: linear-gradient(180deg, #000000 0%, rgba(20, 20, 20, 0.8) 100%);
-            padding: 20px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: white;
-            letter-spacing: 2px;
+            padding: 20px;
         }
 
-        .ip-display {
-            background: rgba(59, 158, 255, 0.1);
-            border: 1px solid rgba(59, 158, 255, 0.3);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin: 15px 40px 10px 40px;
-            display: none;
-            align-items: center;
-            gap: 15px;
-        }
-        .ip-display.show {
-            display: flex;
-        }
-        .ip-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-        }
-        .ip-address {
-            color: #3b9eff;
-            font-size: 18px;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-        }
-        .success-badge {
-            background: #4caf50;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-left: auto;
-        }
         .container {
-            padding: 10px 40px;
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        .movie-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            padding: 10px 0;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .movie-card {
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #1a1a1a;
-            text-decoration: none;
-        }
-        .movie-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-            z-index: 10;
-        }
-        .movie-poster {
-            width: 100%;
-            aspect-ratio: 2/3;
-            object-fit: cover;
-            display: block;
-        }
-        .movie-title {
-            background: #2d2d2d;
-            padding: 12px 15px;
-            font-size: 18px;
-            font-weight: 700;
+
+        h1 {
             text-align: center;
-            color: white;
-            border-top: 1px solid #3d3d3d;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .card-url {
+            color: #667eea;
+            font-size: 0.85em;
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card-url:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
         .loading {
             text-align: center;
             padding: 50px;
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        @media (max-width: 1200px) {
-            .movie-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 15px;
-            }
-        }
-        @media (max-width: 992px) {
-        }
-        @media (max-width: 768px) {
-            .header {
-                padding: 15px 20px;
-            }
-            .logo {
-                font-size: 24px;
-            }
-            .container {
-                padding: 10px 20px;
-            }
-            .movie-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 12px;
-            }
-            .ip-display {
-                margin: 15px 20px 10px 20px;
-                padding: 12px 15px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .success-badge {
-                margin-left: 0;
-            }
-        }
-        @media (max-width: 480px) {
-            .movie-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-            .movie-title {
-                font-size: 15px;
-                font-weight: 700;
-                padding: 10px;
-            }
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
-    
-    <div class="header">
-        <div class="logo">사이트 바로가기</div>
-    </div>
-    
-    <div id="ip-display" class="ip-display">
-        <span class="ip-label">현재 IP:</span>
-        <span id="ip-address" class="ip-address">확인 중...</span>
-        <span class="success-badge">✓ 우회 성공</span>
-    </div>
-    
+<body>
     <div class="container">
-        <div id="movie-grid" class="movie-grid">
-            <div class="loading">콘텐츠를 불러오는 중...</div>
+        <h1>🎬 스트리밍 사이트 모음</h1>
+        <div id="sites-container" class="grid">
+            <div class="loading">로딩 중...</div>
         </div>
     </div>
 
-    </div>
-    
     <script>
-        // JSON 파일에서 사이트 데이터 로드
+        const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/Koyangseok/Koyangseok.github.io/main/';
+        
         async function loadSites() {
             try {
-                const response = await fetch('sites.json');
-                const sites = await response.json();
+                const response = await fetch(GITHUB_RAW_BASE + 'sites.json');
+                const data = await response.json();
                 
-                const grid = document.getElementById('movie-grid');
-                grid.innerHTML = '';
+                const container = document.getElementById('sites-container');
+                container.innerHTML = '';
                 
-                sites.forEach(site => {
-                    const card = document.createElement('a');
-                    card.href = site.url;
-                    card.className = 'movie-card';
+                data.sites.forEach(site => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.onclick = () => window.open(site.url, '_blank');
+                    
+                    const imageUrl = GITHUB_RAW_BASE + site.image;
                     
                     card.innerHTML = `
-                        <img src="${site.image}" alt="${site.name}" class="movie-poster">
-                        <div class="movie-title">${site.name}</div>
+                        <img src="${imageUrl}" alt="${site.name}" class="card-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22180%22%3E%3Crect fill=%22%23667eea%22 width=%22280%22 height=%22180%22/%3E%3C/svg%3E'">
+                        <div class="card-content">
+                            <h2 class="card-title">${site.name}</h2>
+                            <p class="card-description">${site.description}</p>
+                            <a href="${site.url}" class="card-url" target="_blank" onclick="event.stopPropagation()">
+                                방문하기 →
+                            </a>
+                        </div>
                     `;
                     
-                    grid.appendChild(card);
+                    container.appendChild(card);
                 });
             } catch (error) {
-                console.error('사이트 로드 실패:', error);
-                document.getElementById('movie-grid').innerHTML = 
-                    '<div class="loading">콘텐츠를 불러올 수 없습니다.</div>';
+                console.error('사이트 로딩 실패:', error);
+                document.getElementById('sites-container').innerHTML = 
+                    '<div class="loading">사이트를 불러오는데 실패했습니다.</div>';
             }
         }
-
-        // IP 주소를 가져오는 함수
-        async function getIPAddress() {
-            try {
-                const apis = [
-                    'https://api.ipify.org?format=json',
-                    'https://api64.ipify.org?format=json',
-                    'https://api.my-ip.io/ip.json'
-                ];
-                
-                for (const api of apis) {
-                    try {
-                        const response = await fetch(api);
-                        const data = await response.json();
-                        const ip = data.ip || data.address;
-                        if (ip) {
-                            if (ip === '152.67.209.227') {
-                                document.getElementById('ip-address').textContent = ip;
-                                document.getElementById('ip-display').classList.add('show');
-                            }
-                            return;
-                        }
-                    } catch (e) {
-                        continue;
-                    }
-                }
-            } catch (error) {
-                // 에러 발생 시에도 IP 창을 표시하지 않음
-            }
-        }
-
-        // 페이지 로드 시 실행
-        window.addEventListener('DOMContentLoaded', () => {
-            loadSites();
-            getIPAddress();
-        });
+        
+        loadSites();
     </script>
-
 </body>
 </html>
