@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>스트리밍 사이트 모음</title>
+    <title>Smart TV Launcher</title>
     <style>
         * {
             margin: 0;
@@ -13,155 +12,645 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            min-height: 100vh;
-            padding: 20px;
+            font-family: 'Noto Sans KR', '맑은 고딕', Arial, sans-serif;
+            background-color: #0a0a0a;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
+        .main-container {
+            display: flex;
+            height: 100vh;
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5em;
-            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* 메인 콘텐츠 영역 */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+        /* 미리보기 영역 */
+        .preview-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 60px;
+        }
+
+        .preview-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .preview-image {
+            width: 700px;
+            height: 700px;
+            object-fit: cover;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .preview-info {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .preview-title {
+            font-size: 56px;
+            font-weight: bold;
+        }
+
+        .watch-now-btn {
+            background-color: #e0e0e0;
+            color: #1a1a1a;
+            border: none;
+            padding: 20px 55px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            align-self: flex-start;
+        }
+
+        .watch-now-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .watch-now-btn:active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* 앱 런처 바 */
+        .launcher-bar {
+            height: 200px;
+            background-color: #141414;
             padding: 20px 0;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .launcher-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5px;
+            gap: 15px;
+        }
+
+        .scroll-btn {
+            background-color: #2a2a2a;
+            color: white;
+            border: none;
+            font-size: 28px;
+            font-weight: bold;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
             cursor: pointer;
+            transition: opacity 0.3s;
+            flex-shrink: 0;
+            z-index: 10;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
-            border-color: rgba(102, 126, 234, 0.5);
+        .scroll-btn:hover {
+            background-color: #3a3a3a;
         }
 
-        .card-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .scroll-btn.hidden {
+            opacity: 0.2;
+            cursor: default;
         }
 
-        .card-content {
-            padding: 20px;
+        .apps-scroll-container {
+            flex: 1;
+            overflow-x: auto;
+            overflow-y: hidden;
+            margin: 0;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            max-width: calc(100vw - 150px);
         }
 
-        .card-title {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            font-weight: 600;
+        .apps-scroll-container::-webkit-scrollbar {
+            display: none;
         }
 
-        .card-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin-bottom: 15px;
+        .apps-container {
+            display: inline-flex;
+            gap: 15px;
+            padding: 10px 20px;
+            align-items: center;
+            min-width: min-content;
+            height: 100%;
         }
 
-        .card-url {
-            color: #667eea;
-            font-size: 0.85em;
-            text-decoration: none;
-            display: inline-block;
-            padding: 8px 15px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 20px;
-            transition: all 0.3s ease;
+        .app-btn {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 2px solid #444444;
+            padding: 25px 45px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            min-width: 180px;
+            height: 80px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .card-url:hover {
-            background: rgba(102, 126, 234, 0.2);
-            transform: scale(1.05);
+        .app-btn:hover {
+            background-color: #3a3a3a;
+            color: white;
+        }
+
+        .app-btn.selected {
+            background-color: #4a4a4a;
+            color: white;
+            border-color: white;
+        }
+
+        /* 전체화면 알림 */
+        .fullscreen-notice {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #aaa;
+            z-index: 1000;
+        }
+
+        /* 로딩 상태 */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 1600px) {
+            .preview-image {
+                width: 600px;
+                height: 600px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .preview-container {
+                flex-direction: column;
+            }
+
+            .preview-image {
+                width: 500px;
+                height: 500px;
+            }
+
+            .preview-title {
+                font-size: 42px;
+            }
+
+            .app-btn {
+                min-width: 160px;
+                font-size: 20px;
+                padding: 20px 35px;
+            }
         }
 
         @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 20px;
+            .preview-image {
+                width: 400px;
+                height: 400px;
             }
 
-            h1 {
-                font-size: 2em;
+            .preview-title {
+                font-size: 32px;
             }
-        }
 
-        .loading {
-            text-align: center;
-            padding: 50px;
-            font-size: 1.2em;
-            color: rgba(255, 255, 255, 0.7);
+            .watch-now-btn {
+                font-size: 18px;
+                padding: 15px 40px;
+            }
+
+            .app-btn {
+                min-width: 140px;
+                font-size: 18px;
+                padding: 18px 30px;
+                height: 70px;
+            }
+
+            .launcher-bar {
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎬 스트리밍 사이트 모음</h1>
-        <div id="sites-container" class="grid">
-            <div class="loading">로딩 중...</div>
+    <div class="fullscreen-notice">
+        ESC: 종료 | F11: 전체화면 | ← →: 앱 선택 | Shift+← →: 스크롤 | Enter: 실행 | 마우스휠: 스크롤
+    </div>
+
+    <div class="main-container">
+        <!-- 메인 콘텐츠 -->
+        <div class="content-area">
+            <!-- 미리보기 영역 -->
+            <div class="preview-area">
+                <div class="preview-container">
+                    <img id="previewImage" class="preview-image" src="" alt="미리보기">
+                    <div class="preview-info">
+                        <h1 id="previewTitle" class="preview-title">로딩 중...</h1>
+                        <button class="watch-now-btn" onclick="openSelected()">지금 보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 앱 런처 바 -->
+            <div class="launcher-bar">
+                <div class="launcher-container">
+                    <button class="scroll-btn" id="leftScrollBtn" onclick="scrollLeftForce()">◀</button>
+                    <div class="apps-scroll-container" id="appsScrollContainer">
+                        <div class="apps-container" id="appsContainer">
+                            <div class="loading">사이트 목록을 불러오는 중...</div>
+                        </div>
+                    </div>
+                    <button class="scroll-btn" id="rightScrollBtn" onclick="scrollRightForce()">▶</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/Koyangseok/Koyangseok.github.io/main/';
-        
+        let sites = [];
+        let selectedIndex = 0;
+        const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/Koyangseok/shortcut/main/sites.json';
+        const GITHUB_IMAGE_BASE = 'https://raw.githubusercontent.com/Koyangseok/shortcut/main/';
+
+        // GitHub에서 사이트 목록 로드
         async function loadSites() {
             try {
-                const response = await fetch(GITHUB_RAW_BASE + 'sites.json');
+                // CORS 우회를 위한 캐시 버스팅
+                const response = await fetch(GITHUB_JSON_URL + '?t=' + Date.now());
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const data = await response.json();
                 
-                const container = document.getElementById('sites-container');
-                container.innerHTML = '';
+                console.log('로드된 데이터:', data); // 디버깅용
                 
-                data.sites.forEach(site => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.onclick = () => window.open(site.url, '_blank');
-                    
-                    const imageUrl = GITHUB_RAW_BASE + site.image;
-                    
-                    card.innerHTML = `
-                        <img src="${imageUrl}" alt="${site.name}" class="card-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22180%22%3E%3Crect fill=%22%23667eea%22 width=%22280%22 height=%22180%22/%3E%3C/svg%3E'">
-                        <div class="card-content">
-                            <h2 class="card-title">${site.name}</h2>
-                            <p class="card-description">${site.description}</p>
-                            <a href="${site.url}" class="card-url" target="_blank" onclick="event.stopPropagation()">
-                                방문하기 →
-                            </a>
-                        </div>
-                    `;
-                    
-                    container.appendChild(card);
-                });
+                // YouTube 버튼을 맨 앞에 추가
+                sites = [
+                    {
+                        name: "YouTube",
+                        url: "https://www.youtube.com",
+                        image: "youtube.png"
+                    },
+                    ...(data.sites || data) // sites 배열이 있으면 사용, 없으면 data 자체 사용
+                ];
+
+                console.log('최종 사이트 목록:', sites); // 디버깅용
+                
+                renderApps();
+                updateSelection();
+                
+                // 초기 스크롤 위치 설정 (맨 왼쪽)
+                setTimeout(() => {
+                    const container = document.getElementById('appsScrollContainer');
+                    if (container) {
+                        container.scrollLeft = 0;
+                        updateScrollButtons();
+                    }
+                }, 200);
             } catch (error) {
-                console.error('사이트 로딩 실패:', error);
-                document.getElementById('sites-container').innerHTML = 
-                    '<div class="loading">사이트를 불러오는데 실패했습니다.</div>';
+                console.error('사이트 목록 로드 실패:', error);
+                console.error('에러 상세:', error.message);
+                
+                // 폴백: 기본 사이트 목록 사용
+                sites = [
+                    {
+                        name: "YouTube",
+                        url: "https://www.youtube.com",
+                        image: "youtube.png"
+                    },
+                    {
+                        name: "Netflix",
+                        url: "https://www.netflix.com",
+                        image: "placeholder.png"
+                    }
+                ];
+                
+                renderApps();
+                updateSelection();
+                
+                document.getElementById('appsContainer').insertAdjacentHTML('beforeend',
+                    '<div style="color: #ff6b6b; padding: 10px; font-size: 12px;">GitHub 연동 실패. 기본 목록을 표시합니다.</div>');
             }
         }
+
+        // 앱 버튼 렌더링
+        function renderApps() {
+            const container = document.getElementById('appsContainer');
+            container.innerHTML = '';
+
+            sites.forEach((site, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'app-btn';
+                btn.textContent = site.name;
+                btn.onclick = () => selectApp(index);
+                container.appendChild(btn);
+            });
+
+            // 렌더링 후 스크롤 버튼 상태 업데이트
+            setTimeout(() => {
+                updateScrollButtons();
+            }, 100);
+        }
+
+        // 앱 선택
+        function selectApp(index) {
+            selectedIndex = index;
+            updateSelection();
+        }
+
+        // 선택 상태 업데이트
+        function updateSelection() {
+            const buttons = document.querySelectorAll('.app-btn');
+            buttons.forEach((btn, idx) => {
+                if (idx === selectedIndex) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+
+            updatePreview();
+            scrollToSelected();
+        }
+
+        // 미리보기 업데이트
+        function updatePreview() {
+            if (selectedIndex >= 0 && selectedIndex < sites.length) {
+                const site = sites[selectedIndex];
+                const titleEl = document.getElementById('previewTitle');
+                const imageEl = document.getElementById('previewImage');
+
+                titleEl.textContent = site.name;
+
+                // 이미지 URL 처리
+                let imageUrl = site.image || '';
+                
+                console.log('원본 이미지 경로:', imageUrl); // 디버깅용
+                
+                // GitHub raw URL로 변환
+                if (imageUrl) {
+                    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+                        // 이미 전체 URL인 경우 그대로 사용
+                    } else {
+                        // 상대 경로인 경우 GitHub raw URL로 변환
+                        imageUrl = GITHUB_IMAGE_BASE + imageUrl;
+                    }
+                }
+                
+                console.log('최종 이미지 URL:', imageUrl); // 디버깅용
+                
+                // 이미지 설정
+                if (imageUrl) {
+                    imageEl.src = imageUrl;
+                } else {
+                    // 이미지가 없으면 플레이스홀더
+                    imageEl.src = 'https://via.placeholder.com/700x700/2a2a2a/ffffff?text=' + 
+                                  encodeURIComponent(site.name);
+                }
+                
+                // 이미지 로딩 실패 시 폴백
+                imageEl.onerror = () => {
+                    console.error('이미지 로딩 실패:', imageUrl);
+                    imageEl.src = 'https://via.placeholder.com/700x700/2a2a2a/ffffff?text=' + 
+                                  encodeURIComponent(site.name);
+                };
+            }
+        }
+
+        // 선택된 앱으로 스크롤
+        function scrollToSelected() {
+            const container = document.getElementById('appsScrollContainer');
+            const buttons = document.querySelectorAll('.app-btn');
+            if (buttons[selectedIndex]) {
+                const btn = buttons[selectedIndex];
+                const btnLeft = btn.offsetLeft;
+                const btnWidth = btn.offsetWidth;
+                const containerWidth = container.clientWidth;
+                const scrollLeft = btnLeft - (containerWidth / 2) + (btnWidth / 2);
+                
+                container.scrollTo({
+                    left: scrollLeft,
+                    behavior: 'smooth'
+                });
+            }
+            updateScrollButtons();
+        }
+
+        // 선택된 앱 열기
+        function openSelected() {
+            if (selectedIndex >= 0 && selectedIndex < sites.length) {
+                const site = sites[selectedIndex];
+                window.open(site.url, '_blank');
+            }
+        }
+
+        // 이전 앱
+        function prevApp() {
+            selectedIndex = (selectedIndex - 1 + sites.length) % sites.length;
+            updateSelection();
+        }
+
+        // 다음 앱
+        function nextApp() {
+            selectedIndex = (selectedIndex + 1) % sites.length;
+            updateSelection();
+        }
+
+        // 왼쪽 스크롤 (강제 - 항상 실행)
+        function scrollLeftForce() {
+            const container = document.getElementById('appsScrollContainer');
+            const leftBtn = document.getElementById('leftScrollBtn');
+            const scrollAmount = 400;
+            
+            console.log('왼쪽 스크롤 클릭, 현재 위치:', container.scrollLeft);
+            
+            // 무조건 스크롤 실행
+            container.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+            
+            // 즉시 버튼 표시
+            leftBtn.classList.remove('hidden');
+            
+            // 스크롤 후 버튼 상태 업데이트
+            setTimeout(updateScrollButtons, 50);
+            setTimeout(updateScrollButtons, 400);
+        }
+
+        // 오른쪽 스크롤 (강제 - 항상 실행)
+        function scrollRightForce() {
+            const container = document.getElementById('appsScrollContainer');
+            const rightBtn = document.getElementById('rightScrollBtn');
+            const scrollAmount = 400;
+            
+            console.log('오른쪽 스크롤 클릭, 현재 위치:', container.scrollLeft);
+            
+            // 무조건 스크롤 실행
+            container.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            
+            // 즉시 버튼 표시
+            rightBtn.classList.remove('hidden');
+            
+            // 스크롤 후 버튼 상태 업데이트
+            setTimeout(updateScrollButtons, 50);
+            setTimeout(updateScrollButtons, 400);
+        }
+
+        // 왼쪽 스크롤
+        function scrollLeft() {
+            scrollLeftForce();
+        }
+
+        // 오른쪽 스크롤
+        function scrollRight() {
+            scrollRightForce();
+        }
+
+        // 스크롤 버튼 상태 업데이트
+        function updateScrollButtons() {
+            const container = document.getElementById('appsScrollContainer');
+            const leftBtn = document.getElementById('leftScrollBtn');
+            const rightBtn = document.getElementById('rightScrollBtn');
+
+            if (!container || !leftBtn || !rightBtn) return;
+
+            const scrollLeft = container.scrollLeft;
+            const maxScroll = container.scrollWidth - container.clientWidth;
+
+            console.log('스크롤 상태:', {
+                scrollLeft: scrollLeft,
+                maxScroll: maxScroll,
+                containerWidth: container.clientWidth,
+                scrollWidth: container.scrollWidth
+            });
+
+            // 스크롤이 필요 없는 경우 (모든 항목이 화면에 표시됨)
+            if (maxScroll <= 1) {
+                leftBtn.classList.add('hidden');
+                rightBtn.classList.add('hidden');
+                return;
+            }
+
+            // 맨 왼쪽 근처이면 왼쪽 버튼 흐리게
+            if (scrollLeft <= 10) {
+                leftBtn.classList.add('hidden');
+            } else {
+                leftBtn.classList.remove('hidden');
+            }
+
+            // 맨 오른쪽 근처이면 오른쪽 버튼 흐리게
+            if (scrollLeft >= maxScroll - 10) {
+                rightBtn.classList.add('hidden');
+            } else {
+                rightBtn.classList.remove('hidden');
+            }
+        }
+
+        // 전체화면 토글
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // 키보드 이벤트
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'Escape':
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen();
+                    }
+                    break;
+                case 'F11':
+                    e.preventDefault();
+                    toggleFullscreen();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    // Shift 키를 누르면 스크롤, 아니면 앱 선택
+                    if (e.shiftKey) {
+                        scrollLeft();
+                    } else {
+                        prevApp();
+                    }
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    // Shift 키를 누르면 스크롤, 아니면 앱 선택
+                    if (e.shiftKey) {
+                        scrollRight();
+                    } else {
+                        nextApp();
+                    }
+                    break;
+                case 'Enter':
+                    openSelected();
+                    break;
+                case 'PageUp':
+                    e.preventDefault();
+                    scrollLeft();
+                    break;
+                case 'PageDown':
+                    e.preventDefault();
+                    scrollRight();
+                    break;
+            }
+        });
+
+        // 스크롤 이벤트
+        const scrollContainer = document.getElementById('appsScrollContainer');
+        scrollContainer.addEventListener('scroll', updateScrollButtons);
         
+        // 마우스 휠로 좌우 스크롤 (Shift 키 없이도 작동)
+        scrollContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scrollContainer.scrollBy({
+                left: e.deltaY > 0 ? 100 : -100,
+                behavior: 'smooth'
+            });
+            // 휠 스크롤 후 버튼 상태 업데이트
+            setTimeout(updateScrollButtons, 50);
+        }, { passive: false });
+
+        // 화면 크기 변경 시 스크롤 버튼 업데이트
+        window.addEventListener('resize', () => {
+            updateScrollButtons();
+        });
+
+        // 초기화
         loadSites();
     </script>
 </body>
