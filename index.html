@@ -219,6 +219,7 @@
         @media (max-width: 1200px) {
             .preview-container {
                 flex-direction: column;
+                gap: 30px;
             }
 
             .preview-image {
@@ -238,29 +239,96 @@
         }
 
         @media (max-width: 768px) {
+            .preview-area {
+                padding: 20px 15px;
+            }
+
+            .preview-container {
+                gap: 20px;
+            }
+
             .preview-image {
-                width: 400px;
-                height: 400px;
+                width: 280px;
+                height: 280px;
+                border-radius: 30px;
             }
 
             .preview-title {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .watch-now-btn {
-                font-size: 18px;
-                padding: 15px 40px;
+                font-size: 16px;
+                padding: 12px 35px;
             }
 
             .app-btn {
-                min-width: 140px;
-                font-size: 18px;
-                padding: 18px 30px;
-                height: 70px;
+                min-width: 120px;
+                font-size: 16px;
+                padding: 15px 25px;
+                height: 65px;
             }
 
             .launcher-bar {
-                height: 180px;
+                height: 150px;
+            }
+
+            .scroll-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .preview-area {
+                padding: 15px 10px;
+            }
+
+            .preview-container {
+                gap: 15px;
+            }
+
+            .preview-image {
+                width: 220px;
+                height: 220px;
+                border-radius: 20px;
+            }
+
+            .preview-info {
+                gap: 20px;
+            }
+
+            .preview-title {
+                font-size: 24px;
+            }
+
+            .watch-now-btn {
+                font-size: 15px;
+                padding: 10px 30px;
+            }
+
+            .app-btn {
+                min-width: 100px;
+                font-size: 14px;
+                padding: 12px 20px;
+                height: 55px;
+            }
+
+            .launcher-bar {
+                height: 130px;
+                padding: 15px 0;
+            }
+
+            .scroll-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .apps-container {
+                gap: 10px;
+                padding: 10px 10px;
             }
         }
     </style>
