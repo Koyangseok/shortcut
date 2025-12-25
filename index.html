@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="yeti" content="noindex, nofollow, noarchive, nosnippet">
     <title>Smart TV Launcher</title>
     <style>
         * {
@@ -43,7 +46,10 @@
         .preview-container {
             display: flex;
             align-items: center;
-            gap: 40px;
+            justify-content: center; /* 가운데 정렬 */
+            gap: 60px;
+            width: 100%;
+            max-width: 1400px;
         }
 
         .preview-image {
@@ -52,12 +58,15 @@
             object-fit: cover;
             border-radius: 50px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
         }
 
         .preview-info {
             display: flex;
             flex-direction: column;
             gap: 35px;
+            align-items: center; /* 가운데 정렬 */
+            text-align: center; /* 텍스트 가운데 정렬 */
         }
 
         .preview-title {
@@ -75,7 +84,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.2s;
-            align-self: flex-start;
         }
 
         .watch-now-btn:hover {
