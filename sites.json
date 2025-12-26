@@ -2,7 +2,7 @@
     {
         "name": "실시간 TV",
         "url": "https://tv.mintelly.com/p/onair.html",
-        "image": "webtv.png"
+        "image": "webtv.png",
         "phrase": "컴퓨터로 볼 경우에 HLS Player 설치 필수<br>(사이트 참고)"
     },
     {
