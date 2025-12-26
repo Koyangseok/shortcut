@@ -27,7 +27,7 @@
     {
         "name": "GYS Movie",
         "url": "https://gys-movie.vercel.app/",
-        "image": "gysm.png"
+        "image": "gysm.png",
         "phrase": "아이디와 비밀번호는 운영자에게 문의하세요"
     },
     {
@@ -39,7 +39,7 @@
     {
         "name": "Adguard",
         "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
-        "image": "adguard.png"
-        "phrase": "광고 차단 "
+        "image": "adguard.png",
+        "phrase": "유튜브 및 티비위키 부류의 광고 차단 확장앱입니다"
     }
 ]
