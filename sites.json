@@ -21,12 +21,6 @@
         "image": "hoohoo.png"
     },
     {
-        "name": "티비핫",
-        "url": "https://tvhot.store/",
-        "image": "tvhot.png",
-        "phrase": "티비위키와 같은 자료로 운영되고 있습니다"
-    },
-    {
         "name": "GYS Movie",
         "url": "https://gys-movie.vercel.app/",
         "image": "gysm.png",
