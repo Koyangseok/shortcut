@@ -378,7 +378,6 @@
                     <img id="previewImage" class="preview-image" src="" alt="미리보기">
                     <div class="preview-info">
                         <h1 id="previewTitle" class="preview-title">로딩 중...</h1>
-                        <p class="password-notice">비밀번호는 a입니다</p>
                         <button class="watch-now-btn" onclick="openSelected()">지금 보기</button>
                     </div>
                 </div>
@@ -408,50 +407,14 @@
         // 로컬에서 사이트 목록 로드
         async function loadSites() {
             try {
-                // JSON 데이터를 직접 포함 (CORS 문제 해결)
-                const data = [
-                    {
-                        "name": "실시간 TV",
-                        "url": "https://webtv.dothome.co.kr/",
-                        "image": "webtv.png"
-                    },
-                    {
-                        "name": "티비위키",
-                        "url": "https://tvwiki4.net/",
-                        "image": "tvwiki.png"
-                    },
-                    {
-                        "name": "티비룸",
-                        "url": "https://tvroom11.org/",
-                        "image": "tvroom.png"
-                    },
-                    {
-                        "name": "후후티비",
-                        "url": "https://hoohootv336.xyz",
-                        "image": "hoohoo.png"
-                    },
-                    {
-                        "name": "티비핫",
-                        "url": "https://tvhot.store/",
-                        "image": "tvhot.png"
-                    },
-                    {
-                        "name": "GYS Movie",
-                        "url": "https://gys-movie.vercel.app/",
-                        "image": "gysm.png"
-                    },
-                    {
-                        "name": "GYS Game",
-                        "url": "https://gysgame.vercel.app/",
-                        "image": "gysg.png",
-                        "phrase": "비밀번호는 a입니다"
-                    },
-                    {
-                        "name": "Adguard",
-                        "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
-                        "image": "adguard.png"
-                    }
-                ];
+                // 로컬 JSON 파일 로드
+                const response = await fetch(LOCAL_JSON_URL + '?t=' + Date.now());
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
                 
                 console.log('로드된 데이터:', data); // 디버깅용
                 
@@ -462,7 +425,7 @@
                         url: "https://www.youtube.com",
                         image: "youtube.png"
                     },
-                    ...data
+                    ...(data.sites || data) // sites 배열이 있으면 사용, 없으면 data 자체 사용
                 ];
 
                 console.log('최종 사이트 목록:', sites); // 디버깅용
@@ -555,12 +518,12 @@
                 titleEl.textContent = site.name;
                 
                 // JSON에 phrase 필드가 있으면 표시
-if (site.phrase) {
-    passwordNotice.innerHTML = site.phrase;  // textContent를 innerHTML로 변경
-    passwordNotice.style.display = 'block';
-} else {
-    passwordNotice.style.display = 'none';
-}
+                if (site.phrase) {
+                    passwordNotice.textContent = site.phrase;
+                    passwordNotice.style.display = 'block';
+                } else {
+                    passwordNotice.style.display = 'none';
+                }
 
                 // 이미지 URL 처리
                 let imageUrl = site.image || '';
@@ -582,15 +545,18 @@ if (site.phrase) {
                 // 이미지 설정
                 if (imageUrl) {
                     imageEl.src = imageUrl;
-                    // 이미지 로딩 실패 시 빈 이미지로 대체
-                    imageEl.onerror = () => {
-                        console.error('이미지 로딩 실패:', imageUrl);
-                        imageEl.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="700" height="700"%3E%3Crect width="700" height="700" fill="%232a2a2a"/%3E%3Ctext x="50%25" y="50%25" font-size="48" fill="white" text-anchor="middle" dy=".3em"%3E' + encodeURIComponent(site.name) + '%3C/text%3E%3C/svg%3E';
-                    };
                 } else {
-                    // 이미지가 없으면 SVG placeholder
-                    imageEl.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="700" height="700"%3E%3Crect width="700" height="700" fill="%232a2a2a"/%3E%3Ctext x="50%25" y="50%25" font-size="48" fill="white" text-anchor="middle" dy=".3em"%3E' + encodeURIComponent(site.name) + '%3C/text%3E%3C/svg%3E';
+                    // 이미지가 없으면 플레이스홀더
+                    imageEl.src = 'https://via.placeholder.com/700x700/2a2a2a/ffffff?text=' + 
+                                  encodeURIComponent(site.name);
                 }
+                
+                // 이미지 로딩 실패 시 폴백
+                imageEl.onerror = () => {
+                    console.error('이미지 로딩 실패:', imageUrl);
+                    imageEl.src = 'https://via.placeholder.com/700x700/2a2a2a/ffffff?text=' + 
+                                  encodeURIComponent(site.name);
+                };
             }
         }
 
