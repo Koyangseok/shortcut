@@ -9,7 +9,7 @@
         "url": "https://tvwiki4.net/",
         "image": "tvwiki.png"
     },
-        {
+    {
         "name": "티비룸",
         "url": "https://tvroom11.org/",
         "image": "tvroom.png"
@@ -24,21 +24,20 @@
         "url": "https://tvhot.store/",
         "image": "tvhot.png"
     },
-        {
+    {
         "name": "GYS Movie",
         "url": "https://gys-movie.vercel.app/",
         "image": "gysm.png"
     },
-         {
+    {
         "name": "GYS Game",
         "url": "https://gysgame.vercel.app/",
-        "image": "gysg.png"
+        "image": "gysg.png",
+        "phrase": "비밀번호는 a입니다"
     },
-             {
+    {
         "name": "Adguard",
         "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
         "image": "adguard.png"
     }
-    
-    
 ]

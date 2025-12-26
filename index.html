@@ -75,6 +75,13 @@
             font-weight: bold;
         }
 
+        .password-notice {
+            color: white;
+            font-size: 18px;
+            opacity: 0.7;
+            margin-top: -20px;
+        }
+
         .watch-now-btn {
             background-color: #e0e0e0;
             color: #1a1a1a;
@@ -232,6 +239,10 @@
                 font-size: 42px;
             }
 
+            .password-notice {
+                font-size: 16px;
+            }
+
             .app-btn {
                 min-width: 160px;
                 font-size: 20px;
@@ -261,6 +272,11 @@
 
             .preview-title {
                 font-size: 22px;
+            }
+
+            .password-notice {
+                font-size: 13px;
+                margin-top: -5px;
             }
 
             .watch-now-btn {
@@ -316,6 +332,11 @@
                 font-size: 20px;
             }
 
+            .password-notice {
+                font-size: 12px;
+                margin-top: -3px;
+            }
+
             .watch-now-btn {
                 font-size: 13px;
                 padding: 8px 25px;
@@ -357,6 +378,7 @@
                     <img id="previewImage" class="preview-image" src="" alt="미리보기">
                     <div class="preview-info">
                         <h1 id="previewTitle" class="preview-title">로딩 중...</h1>
+                        <p class="password-notice">비밀번호는 a입니다</p>
                         <button class="watch-now-btn" onclick="openSelected()">지금 보기</button>
                     </div>
                 </div>
@@ -492,8 +514,17 @@
                 const site = sites[selectedIndex];
                 const titleEl = document.getElementById('previewTitle');
                 const imageEl = document.getElementById('previewImage');
+                const passwordNotice = document.querySelector('.password-notice');
 
                 titleEl.textContent = site.name;
+                
+                // JSON에 phrase 필드가 있으면 표시
+                if (site.phrase) {
+                    passwordNotice.textContent = site.phrase;
+                    passwordNotice.style.display = 'block';
+                } else {
+                    passwordNotice.style.display = 'none';
+                }
 
                 // 이미지 URL 처리
                 let imageUrl = site.image || '';
