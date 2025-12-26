@@ -28,6 +28,7 @@
         "name": "GYS Movie",
         "url": "https://gys-movie.vercel.app/",
         "image": "gysm.png"
+        "phrase": "아이디와 비밀번호는 운영자에게 문의하세요"
     },
     {
         "name": "GYS Game",
@@ -39,5 +40,6 @@
         "name": "Adguard",
         "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
         "image": "adguard.png"
+        "phrase": "광고 차단 "
     }
 ]
