@@ -555,13 +555,12 @@
                 titleEl.textContent = site.name;
                 
                 // JSON에 phrase 필드가 있으면 표시
-                if (site.phrase) {
-                    passwordNotice.textContent = site.phrase;
-                    passwordNotice.style.display = 'block';
-                } else {
-                    passwordNotice.style.display = 'none';
-                }
-
+if (site.phrase) {
+    passwordNotice.innerHTML = site.phrase;  // textContent를 innerHTML로 변경
+    passwordNotice.style.display = 'block';
+} else {
+    passwordNotice.style.display = 'none';
+}
                 // 이미지 URL 처리
                 let imageUrl = site.image || '';
                 
