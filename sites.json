@@ -3,7 +3,7 @@
         "name": "실시간 TV",
         "url": "https://tv.mintelly.com/p/onair.html",
         "image": "webtv.png",
-        "phrase": "컴퓨터로 볼 경우에 HLS Player 설치 필수<br>(사이트 참고)<br>MBC는 광주, SBS는 대구가 안정적"
+        "phrase": "컴퓨터로 볼 경우에 HLS Player 설치 필수<br>(사이트 참고)<br>MBC, SBS 둘다 광주가 안정적"
     },
     {
         "name": "티비위키",
