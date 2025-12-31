@@ -29,12 +29,6 @@
         "phrase": "아이디와 비밀번호는 GYS에게 문의하세요"
     },
     {
-        "name": "GYS Game",
-        "url": "https://gysgame.vercel.app/",
-        "image": "gysg.png",
-        "phrase": "비밀번호는 GYS에게 문의하세요"
-    },
-    {
         "name": "Adguard",
         "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
         "image": "adguard.png",
