@@ -46,10 +46,16 @@
         "phrase": "비밀번호는 GYS에게 문의하세요"
     },
     {
-        "name": "GYS 시청기록 확장앱",
+        "name": "GYS 시청기록",
         "url": "https://drive.google.com/drive/folders/1YUqK1SaQdk103yZJLelEw962sa47kxvL?usp=sharing",
         "image": "viewer.png",
-        "phrase": "압축 해제 후 확장앱 불러오시면 됩니다<br>영상 사이트 전부 적용"
+        "phrase": "압축 해제 후 확장프로그램 불러오시면 됩니다<br>영상 사이트 전부 적용"
+    },
+        {
+        "name": "GYS 도박광고차단",
+        "url": "https://drive.google.com/drive/folders/14e9sNN1Z-K6fB9OUe6P-ChsRqNl4pKSF?usp=sharing",
+        "image": "dobak.png",
+        "phrase": "압축 해제 후 확장프로그램 불러오시면 됩니다<br>티비위키, 티비룸, 후후티비, 애니라이프 적용<br>티비위키 플레이어 전환 적용"
     },
     {
         "name": "Adguard",
