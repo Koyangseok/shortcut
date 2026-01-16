@@ -51,16 +51,17 @@
         "image": "dobak.png",
         "phrase": "압축 해제 후 확장프로그램 불러오시면 됩니다"
     },
+        {
+        "name": "Adguard",
+        "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
+        "image": "adguard.png",
+        "phrase": "유튜브 및 티비위키 등 광고 차단 확장앱입니다"
+    },
     {
         "name": "GYS Game",
         "url": "https://gysgame.vercel.app/",
         "image": "gysg.png",
         "phrase": "비밀번호는 GYS에게 문의하세요"
-    },
-    {
-        "name": "Adguard",
-        "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
-        "image": "adguard.png",
-        "phrase": "유튜브 및 티비위키 등 광고 차단 확장앱입니다"
     }
+
 ]
