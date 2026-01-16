@@ -24,11 +24,6 @@
         "phrase": "티비위키 대체 사이트입니다<br>티비위키 버퍼링이 심할 경우에 보세요"
     },
     {
-        "name": "애니라이프",
-        "url": "https://anilife.app/home",
-        "image": "anilife.png"
-    },
-    {
         "name": "스포츠 중계",
         "url": "https://365tvda.com/content/channel1",
         "image": "sports.png"
@@ -38,6 +33,11 @@
         "url": "https://gys-movie.vercel.app/",
         "image": "gysm.png",
         "phrase": "아이디와 비밀번호는 GYS에게 문의하세요"
+    },
+     {
+        "name": "애니라이프",
+        "url": "https://anilife.app/home",
+        "image": "anilife.png"
     },
     {
         "name": "GYS 시청기록",
