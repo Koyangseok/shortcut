@@ -57,17 +57,17 @@
         "image": "adguard.png",
         "phrase": "유튜브 광고 차단 확장앱입니다"
     },
-     {
-        "name": "GYS TV 스마트폰",
-        "url": "https://github.com/Koyangseok/GYS-Storage/raw/main/GYS%20TV.apk",
-        "image": "android.png",
-        "phrase": "GYS TV 안드로이드 스마트폰용입니다."
-    },
     {
         "name": "GYS Game",
         "url": "https://gysgame.vercel.app/",
         "image": "gysg.png",
         "phrase": "비밀번호는 GYS에게 문의하세요"
+    },
+     {
+        "name": "GYS TV 스마트폰",
+        "url": "https://github.com/Koyangseok/GYS-Storage/raw/main/GYS%20TV.apk",
+        "image": "android.png",
+        "phrase": "GYS TV 안드로이드 스마트폰용입니다."
     }
 
 ]
