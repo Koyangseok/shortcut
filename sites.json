@@ -23,11 +23,6 @@
         "image": "webtv.png",
         "phrase": "컴퓨터로 볼 경우에 HLS Player 설치 필수<br>(사이트 참고)<br>광주 추천"
     },
-         {
-        "name": "애니라이프",
-        "url": "https://anilife.app/home",
-        "image": "anilife.png"
-    },
      {
         "name": "스포츠 중계",
         "url": "https://365tvda.com/content/channel1",
