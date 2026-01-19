@@ -52,10 +52,10 @@
         "phrase": "압축 해제 후 확장프로그램을 불러오시면 됩니다"
     },
         {
-        "name": "Adguard",
+        "name": "Adguard PC",
         "url": "https://chromewebstore.google.com/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg?hl=ko",
         "image": "adguard.png",
-        "phrase": "유튜브 광고 차단 확장앱입니다"
+        "phrase": "유튜브 광고 차단 컴퓨터용 확장앱입니다"
     },
     {
         "name": "GYS Game",
