@@ -33,12 +33,17 @@
         "url": "https://365tvda.com/content/channel1",
         "image": "sports.png"
     },
-  
     {
         "name": "GYS Game",
         "url": "https://gysgame.vercel.app/",
         "image": "gysg.png",
         "phrase": "비밀번호는 GYS에게 문의하세요"
+    },
+            {
+        "name": "확장앱 모음",
+        "url": "https://gys-storage.vercel.app/",
+        "image": "dobak.png",
+        "phrase": "압축 해제 후 확장프로그램을 불러오시면 됩니다"
     },
      {
         "name": "GYS TV 스마트폰",
