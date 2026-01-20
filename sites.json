@@ -35,6 +35,12 @@
         "image": "extention.png",
         "phrase": "압축 해제 후 확장프로그램을 불러오시면 됩니다"
     },
+         {
+        "name": "GYS TV 컴퓨터",
+        "url": "https://drive.google.com/file/d/1fouhXpjlgdM2Ix6wtZaIWmc99Xq9fy3X/view?usp=sharing",
+        "image": "android.png",
+        "phrase": "GYS TV 컴퓨터용입니다."
+    },
      {
         "name": "GYS TV 스마트폰",
         "url": "https://github.com/Koyangseok/GYS-Storage/raw/main/GYS%20TV.apk",
