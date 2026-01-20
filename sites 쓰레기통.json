@@ -5,7 +5,12 @@
         "phrase": "티비위키 대체 사이트입니다<br>티비위키 버퍼링이 심할 경우에 보세요"
 
     },
-
+         {
+        "name": "GYS TV 컴퓨터",
+        "url": "https://drive.google.com/file/d/1fouhXpjlgdM2Ix6wtZaIWmc99Xq9fy3X/view?usp=sharing",
+        "image": "pc.png",
+        "phrase": "GYS TV 컴퓨터용입니다<br>시청기록은 서버 저장됩니다<br>플로팅 버튼을 꾹 누르면 메인화면으로 돌아갑니다"
+    },
   {
         "name": "GYS 시청기록",
         "url": "https://github.com/Koyangseok/GYS-Storage/raw/main/GYS%20History.zip",
@@ -37,3 +42,4 @@
         "url": "https://anilife.app/home",
         "image": "anilife.png"
     },
+
