@@ -30,16 +30,10 @@
     },
   
             {
-        "name": "확장앱 모음",
+        "name": "기타",
         "url": "https://gys-storage.vercel.app/",
         "image": "extention.png",
-        "phrase": "압축 해제 후 확장프로그램을 불러오시면 됩니다"
-    },
-     {
-        "name": "GYS TV 스마트폰",
-        "url": "https://github.com/Koyangseok/GYS-Storage/raw/main/GYS%20TV.apk",
-        "image": "android.png",
-        "phrase": "시청기록은 서버 저장됩니다<br>플로팅 버튼을 꾹 누르면 버튼이 사라집니다(만화 감상용)<br>메인화면으로 돌아가려면 앱 강제종료 후 재실행하시면 됩니다"
+        "phrase": "확장앱은 압축 해제 후 확장프로그램을 불러오시면 됩니다<br>apk파일은 안드로이드 스마트폰에 바로 설치하시며 됩니다"
     }
 
 ]
