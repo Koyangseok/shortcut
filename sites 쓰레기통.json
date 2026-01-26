@@ -5,6 +5,12 @@
         "phrase": "티비위키 대체 사이트입니다<br>티비위키 버퍼링이 심할 경우에 보세요"
 
     },
+        {
+        "name": "실시간 TV",
+        "url": "https://tv.mintelly.com/p/onair.html",
+        "image": "webtv.png",
+        "phrase": "컴퓨터로 볼 경우에 HLS Player 설치 필수<br>(사이트 참고)<br>광주 추천"
+    },  
 
      {
         "name": "스포츠 중계",
@@ -55,4 +61,5 @@
         "image": "android.png",
         "phrase": "시청기록은 서버 저장됩니다<br>플로팅 버튼을 꾹 누르면 버튼이 사라집니다(만화 감상용)<br>메인화면으로 돌아가려면 앱 강제종료 후 재실행하시면 됩니다"
     }
+
 
