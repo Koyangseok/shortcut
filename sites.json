@@ -5,6 +5,13 @@
         "image": "tvwiki.png",
         "phrase": "자료가 많은 영상 사이트입니다<br>해외 IP는 차단됩니다"
     },
+            {
+        "name": "후후티비",
+        "url": "https://telegra.ph/%ED%9B%84%ED%9B%84%ED%8B%B0%EB%B9%84-%EC%B5%9C%EC%8B%A0-%EC%A3%BC%EC%86%8C-09-03",
+        "image": "hoohoo.png",
+        "phrase": "티비위키 대체 사이트입니다<br>티비위키 버퍼링이 심할 경우에 보세요"
+
+    },
     {
         "name": "티비룸",
         "url": "https://tvroom11.org/",
