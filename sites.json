@@ -36,6 +36,12 @@
         "image": "webtv.png",
         "phrase": "MBS SBS 광주 추천<br><br>"
     },
+        {
+        "name": "스포츠 중계",
+        "url": "https://365tvda.com/content/channel1",
+        "image": "sports.png",
+        "phrase": "<br><br>"
+    },
             {
         "name": "기타",
         "url": "https://gys-storage.vercel.app/",
