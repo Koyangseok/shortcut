@@ -25,6 +25,12 @@
         "image": "gysm.png",
         "phrase": "아이디와 비밀번호는 GYS에게 문의하세요"
     },
+        {
+        "name": "애니라이프",
+        "url": "https://anilife.app/home",
+        "image": "anilife.png",
+        "phrase": "애니메이션 사이트입니다<br><br>"
+    },
             {
         "name": "기타",
         "url": "https://gys-storage.vercel.app/",
