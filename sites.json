@@ -30,6 +30,12 @@
         "image": "anilife.png",
         "phrase": "애니메이션 사이트입니다<br><br>"
     },
+        {
+        "name": "실시간 TV",
+        "url": "https://tv.mintelly.com/p/onair.html",
+        "image": "webtv.png",
+        "phrase": "MBS SBS 광주 추천<br><br>"
+    },
             {
         "name": "기타",
         "url": "https://gys-storage.vercel.app/",
