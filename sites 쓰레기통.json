@@ -42,7 +42,12 @@
         "image": "gysg.png",
         "phrase": "비밀번호는 GYS에게 문의하세요"
     },
-
+         {
+        "name": "마나토끼",
+        "url": "https://t.me/s/newtoki9",
+        "image": "mana.png",
+        "phrase": "웹툰 만화 웹소설 사이트입니다.<br><br>"
+    },
          {
         "name": "애니라이프",
         "url": "https://anilife.app/home",
@@ -55,6 +60,7 @@
         "image": "android.png",
         "phrase": "시청기록은 서버 저장됩니다<br>플로팅 버튼을 꾹 누르면 버튼이 사라집니다(만화 감상용)<br>메인화면으로 돌아가려면 앱 강제종료 후 재실행하시면 됩니다"
     }
+
 
 
 
