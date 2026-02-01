@@ -25,10 +25,28 @@
         "phrase": "아이디와 비밀번호는 GYS에게 문의하세요"
     },
         {
+        "name": "애니라이프",
+        "url": "https://anilife.app/home",
+        "image": "anilife.png",
+        "phrase": "애니메이션 사이트입니다<br><br>"
+    },
+            {
+        "name": "실시간 TV",
+        "url": "https://tv.mintelly.com/p/onair.html",
+        "image": "webtv.png",
+        "phrase": "MBS SBS 광주 추천<br><br>"
+    },
+        {
         "name": "스포츠 중계",
         "url": "https://365tvda.com/content/channel1",
         "image": "sports.png",
         "phrase": "<br><br>"
+    },
+         {
+        "name": "마나토끼",
+        "url": "https://t.me/s/newtoki9",
+        "image": "mana.png",
+        "phrase": "웹툰 만화 웹소설 사이트입니다.<br><br>"
     },
             {
         "name": "기타",
