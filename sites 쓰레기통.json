@@ -1,4 +1,13 @@
 
+
+
+
+{
+        "name": "마나토끼",
+        "url": "https://manatoki469.net/comic?publish=&jaum=&tag=&sst=as_view&sod=desc&stx=&artist=",
+        "image": "mana.png",
+        "phrase": "일본 만화 사이트입니다.<br><br>"
+    },
         {
         "name": "실시간 TV",
         "url": "https://tv.mintelly.com/p/onair.html",
@@ -66,6 +75,7 @@
         "image": "android.png",
         "phrase": "시청기록은 서버 저장됩니다<br>플로팅 버튼을 꾹 누르면 버튼이 사라집니다(만화 감상용)<br>메인화면으로 돌아가려면 앱 강제종료 후 재실행하시면 됩니다"
     }
+
 
 
 
