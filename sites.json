@@ -35,12 +35,6 @@
         "image": "sports.png",
         "phrase": "<br><br>"
     },
-         {
-        "name": "마나토끼",
-        "url": "https://manatoki469.net/comic?publish=&jaum=&tag=&sst=as_view&sod=desc&stx=&artist=",
-        "image": "mana.png",
-        "phrase": "일본 만화 사이트입니다.<br><br>"
-    },
             {
         "name": "기타",
         "url": "https://gys-storage.vercel.app/",
