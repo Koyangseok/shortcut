@@ -31,14 +31,6 @@
         "phrase": "아이디와 비밀번호는 GYS에게 문의하세요"
     },
 
-    <!--
-        {
-        "name": "스포츠 중계",
-        "url": "https://365tvda.com/content/channel1",
-        "image": "sports.png",
-        "phrase": "<br><br>"
-    },
-    -->
             {
         "name": "기타",
         "url": "https://gys-storage.vercel.app/",
