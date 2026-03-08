@@ -22,7 +22,7 @@
         "name": "실시간 TV",
         "url": "https://tv.mintelly.com/p/onair.html",
         "image": "webtv.png",
-        "phrase": "KBS1 작동O, KBS2 작동X, 대전MBC 작동O, 청주SBS 작동O"
+        "phrase": "KBS1 작동O<br>KBS2 작동X<br>대전MBC 작동O<br>청주SBS 작동O"
     },
         {
         "name": "애니라이프",
