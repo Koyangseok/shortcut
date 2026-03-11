@@ -21,7 +21,8 @@
                     {
         "name": "실시간 TV",
         "url": "https://tv.mintelly.com/p/onair.html",
-        "image": "webtv.png"
+        "image": "webtv.png",
+        "phrase": "SBS MBC 광주 화질 준수함"
         },
     
         {
