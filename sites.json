@@ -1,19 +1,19 @@
 [
     {
-        "name": "후후티비",
-        "url": "https://telegra.ph/%ED%9B%84%ED%9B%84%ED%8B%B0%EB%B9%84-%EC%B5%9C%EC%8B%A0-%EC%A3%BC%EC%86%8C-09-03",
-        "image": "hoohoo.png"
+        "name": "티비위키",
+        "url": "https://tvwiki7.net/",
+        "image": "tvwiki.png",
+        "phrase": "자료가 많은 영상 사이트입니다"
     },
-        {
+            {
         "name": "티비룸",
         "url": "https://tvroom11.org/",
         "image": "tvroom.png"
     },
-    {
-        "name": "티비위키",
-        "url": "https://tvwiki6.net/",
-        "image": "tvwiki.png",
-        "phrase": "자료가 많은 영상 사이트입니다"
+        {
+        "name": "후후티비",
+        "url": "https://telegra.ph/%ED%9B%84%ED%9B%84%ED%8B%B0%EB%B9%84-%EC%B5%9C%EC%8B%A0-%EC%A3%BC%EC%86%8C-09-03",
+        "image": "hoohoo.png"
     },
                        {
         "name": "실시간 TV",
