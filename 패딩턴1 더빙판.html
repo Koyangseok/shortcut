@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>영화 재생</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: #0f0f0f;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+header {
+  padding: 16px 24px;
+  background: #000;
+  border-bottom: 1px solid #222;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.player-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 새 창 열기 버튼을 덮기 위한 스타일 */
+.overlay-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  z-index: 10; /* iframe보다 위에 표시되도록 설정 */
+  cursor: default; /* 마우스 커서를 기본 화살표로 유지 */
+}
+
+
+/* Drive 버튼 – 기본 숨김 */
+.drive-button-wrapper {
+  display: none;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.open-drive-btn {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 책갈피 */
+.comments-section {
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.comment-input {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 12px;
+  color: #fff;
+  min-height: 80px;
+}
+
+.comment-submit {
+  margin-top: 8px;
+  background: #e50914;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  float: right;
+}
+
+.comment {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.comment-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+
+.comment-actions button {
+  background: none;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  color: #aaa;
+  margin-right: 8px;
+}
+
+.comment-actions .edit { color: #4a90e2; }
+.comment-actions .delete { color: #e50914; }
+
+.edit-box {
+  display: none;
+  margin-top: 8px;
+}
+
+/* 인증 */
+#authScreen {
+  position: fixed;
+  inset: 0;
+  background: #0f0f0f;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.auth-box {
+  width: 90%;
+  max-width: 360px;
+  background: #1a1a1a;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.auth-box button {
+  width: 100%;
+  padding: 12px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.error {
+  color: #ff5252;
+  margin-top: 10px;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="authScreen">
+  <div class="auth-box">
+    <h3>모바일 접근 인증</h3>
+    <input type="password" id="passwordInput" placeholder="비밀번호">
+    <button id="submitButton">접근하기</button>
+    <div id="errorMsg" class="error"></div>
+  </div>
+</div>
+
+<div id="mainContent" style="display:none;">
+
+
+
+<div class="container">
+
+<div class="player-wrapper">
+  <iframe
+    src="https://drive.google.com/file/d/13TuA33R5HPb_RdS-wrl1EDhOw5mZszDm/preview"
+    allow="autoplay; encrypted-media; fullscreen"
+    allowfullscreen>
+  </iframe>
+  <div class="overlay-button"></div>
+</div>
+
+<div class="drive-button-wrapper" id="driveBtnBox">
+  <button class="open-drive-btn" id="openDriveBtn">Google Drive로 열기</button>
+</div>
+
+<section class="comments-section">
+  <textarea class="comment-input" id="commentInput" placeholder="책갈피를 입력하세요 (시간 / 메모 등)"></textarea>
+  <button class="comment-submit" id="addCommentBtn">저장</button>
+  <div style="clear:both"></div>
+  <div id="commentsList"></div>
+</section>
+
+</div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDhLftrWyhRCJ2WtHCld59fPRU7i5hhduk",
+  databaseURL: "https://gys-movie-default-rtdb.firebaseio.com/"
+};
+
+const DRIVE_LINK = "https://drive.google.com/file/d/13TuA33R5HPb_RdS-wrl1EDhOw5mZszDm/view";
+const STORAGE_KEY = "___1_____comments";
+
+initializeApp(firebaseConfig);
+const db = getDatabase();
+
+const authScreen = document.getElementById("authScreen");
+const mainContent = document.getElementById("mainContent");
+const driveBtnBox = document.getElementById("driveBtnBox");
+
+const passwordInput = document.getElementById("passwordInput");
+const submitButton = document.getElementById("submitButton");
+const errorMsg = document.getElementById("errorMsg");
+
+const commentsList = document.getElementById("commentsList");
+const commentInput = document.getElementById("commentInput");
+
+function isMobile() {
+  return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+}
+
+window.onload = () => {
+  if (isMobile()) {
+    authScreen.style.display = "flex";
+    driveBtnBox.style.display = "block";
+  } else {
+    mainContent.style.display = "block";
+  }
+  renderComments();
+};
+
+submitButton.onclick = async () => {
+  const snap = await get(ref(db, "Mobile_key"));
+  if (passwordInput.value === snap.val()) {
+    authScreen.style.display = "none";
+    mainContent.style.display = "block";
+  } else {
+    errorMsg.textContent = "비밀번호가 틀렸습니다.";
+  }
+};
+
+document.getElementById("openDriveBtn").onclick = () => {
+  window.open(DRIVE_LINK, "_blank");
+};
+
+/* ================= 책갈피 ================= */
+
+function getComments() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+}
+
+function saveComments(list) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+function renderComments() {
+  commentsList.innerHTML = "";
+  const list = getComments();
+
+  list.forEach(c => {
+    const div = document.createElement("div");
+    div.className = "comment";
+
+    div.innerHTML = `
+      <div class="comment-meta">
+        <span>${c.date}</span>
+        <div class="comment-actions">
+          <button class="edit">수정</button>
+          <button class="delete">삭제</button>
+        </div>
+      </div>
+      <div class="comment-text">${c.text}</div>
+
+      <div class="edit-box">
+        <textarea>${c.text}</textarea>
+        <button class="save">저장</button>
+        <button class="cancel">취소</button>
+      </div>
+    `;
+
+    const editBtn = div.querySelector(".edit");
+    const deleteBtn = div.querySelector(".delete");
+    const editBox = div.querySelector(".edit-box");
+    const saveBtn = div.querySelector(".save");
+    const cancelBtn = div.querySelector(".cancel");
+    const textarea = editBox.querySelector("textarea");
+
+    editBtn.onclick = () => editBox.style.display = "block";
+    cancelBtn.onclick = () => editBox.style.display = "none";
+
+    saveBtn.onclick = () => {
+      c.text = textarea.value;
+      c.date = new Date().toLocaleString("ko-KR") + " (수정됨)";
+      saveComments(list);
+      renderComments();
+    };
+
+    deleteBtn.onclick = () => {
+      if (confirm("이 책갈피를 삭제할까요?")) {
+        saveComments(list.filter(x => x !== c));
+        renderComments();
+      }
+    };
+
+    commentsList.appendChild(div);
+  });
+}
+
+document.getElementById("addCommentBtn").onclick = () => {
+  const text = commentInput.value.trim();
+  if (!text) return;
+
+  const list = getComments();
+  list.unshift({
+    text,
+    date: new Date().toLocaleString("ko-KR")
+  });
+
+  saveComments(list);
+  commentInput.value = "";
+  renderComments();
+};
+</script>
+
+<script>
+(function() {
+
+    function wipe() {
+        document.documentElement.innerHTML = "";
+    }
+
+    /* --- 1. console open detection --- */
+    let detectedConsole = false;
+
+    const img = new Image();
+    Object.defineProperty(img, 'id', {
+        get() {
+            detectedConsole = true;
+            wipe();
+        }
+    });
+
+    setInterval(() => {
+        detectedConsole = false;
+        console.log(img);
+        if (detectedConsole) wipe();
+    }, 500);
+
+
+    /* --- 2. window size detection --- */
+    setInterval(() => {
+        if (
+            window.outerWidth - window.innerWidth > 200 ||
+            window.outerHeight - window.innerHeight > 200
+        ) {
+            wipe();
+        }
+    }, 300);
+
+
+    /* --- 3. debugger delay detection --- */
+    setInterval(() => {
+        let start = performance.now();
+        debugger;
+        let end = performance.now();
+
+        if (end - start > 50) {
+            wipe();
+        }
+    }, 500);
+
+})();
+</script>
+
+
+
+</body>
+
+</html>
