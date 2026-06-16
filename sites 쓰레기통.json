@@ -11,7 +11,12 @@
         "image": "tvroom.png"
     },
 
-   
+           {
+        "name": "GYS Game",
+        "url": "https://gysgame.vercel.app/",
+        "image": "gysg.png",
+        "phrase": "비밀번호는 GYS에게 문의하세요"
+    },
  
 
 {
