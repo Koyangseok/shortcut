@@ -1,7 +1,7 @@
 [
             {
         "name": "티비룸",
-        "url": "https://tvroom.me/",
+        "url": "https://tvroom14.org/",
         "image": "tvroom.png"
     },
 
@@ -33,12 +33,6 @@
         "url": "https://gys-movie.vercel.app/",
         "image": "gysm.png",
         "phrase": "아이디와 비밀번호는 GYS에게 문의하세요"
-    },
-            {
-        "name": "기타",
-        "url": "https://gys-storage.vercel.app/",
-        "image": "extention.png",
-        "phrase": "확장앱은 크롬웹스토어에서 바로 설치하시면 됩니다<br>apk파일은 다은로드 후 안드로이드 스마트폰에 바로 설치하시면 됩니다"
     }
 
 ]
