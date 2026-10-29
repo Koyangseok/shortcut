@@ -17,11 +17,7 @@
         "url": "https://tv.mintelly.com/p/onair.html",
         "image": "webtv.png"
         },
-         {
-        "name": "스포츠 중계",
-        "url": "https://365-tv.com",
-        "image": "sports.png"
-    },
+
               {
         "name": "GYS Movie",
         "url": "https://gys-movie.vercel.app/",
